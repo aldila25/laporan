@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Report</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Laporan Kustom</h1>
+      <form id="custom-report-form">
+        <label for="start-date">Tanggal Mulai:</label>
+        <input type="date" id="start-date" name="start-date" />
+
+        <label for="end-date">Tanggal Akhir:</label>
+        <input type="date" id="end-date" name="end-date" />
+
+        <label for="criteria">Kriteria Laporan:</label>
+        <select id="criteria" name="criteria">
+          <option value="divisi">Divisi</option>
+          <option value="waktu">Waktu</option>
+          <option value="kehadiran">Kehadiran</option>
+        </select>
+
+        <button type="submit">Buat Laporan</button>
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grafik Analisis Kehadiran</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Grafik Analisis Kehadiran</h1>
+      <label for="criteria">Pilih Kriteria:</label>
+      <select id="criteria">
+        <option value="month">Bulan</option>
+        <option value="division">Divisi</option>
+        <option value="time">Waktu</option>
+      </select>
+      <canvas id="attendance-chart"></canvas>
+      <div id="legend-container">
+        <!-- Legenda telah dihapus -->
+      </div>
+    </div>
+    <script>
+      const ctx = document.getElementById("attendance-chart").getContext("2d");
+
+      let myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Januari", "Februari", "Maret", "April", "Mei"],
+          datasets: [
+            {
+              label: "Kehadiran",
+              data: [12, 19, 3, 5, 2],
+              backgroundColor: [
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+              ],
+              borderColor: [
+                "rgba(75, 192, 192, 1)",
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(153, 102, 255, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Jumlah Kehadiran",
+                padding: {
+                  top: 10, // Jarak atas dari teks
+                },
+              },
+              ticks: {
+                padding: 10, // Jarak antara nilai dan teks
+              },
+            },
+            x: {
+              title: {
+                display: true,
+                text: "Kriteria",
+                padding: {
+                  bottom: 10, // Jarak bawah dari teks
+                },
+              },
+              ticks: {
+                padding: 10, // Jarak antara nilai dan teks
+              },
+            },
+          },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.dataset.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  label += context.raw + " kehadiran";
+                  return label;
+                },
+              },
+            },
+            legend: {
+              display: false,
+            },
+          },
+        },
+      });
+
+      document
+        .getElementById("criteria")
+        .addEventListener("change", function (event) {
+          const value = event.target.value;
+          let labels = [];
+          let data = [];
+
+          // Contoh data untuk kriteria berbeda
+          switch (value) {
+            case "month":
+              labels = ["Januari", "Februari", "Maret", "April", "Mei"];
+              data = [12, 19, 3, 5, 2];
+              break;
+            case "division":
+              labels = ["Divisi A", "Divisi B", "Divisi C"];
+              data = [10, 15, 8];
+              break;
+            case "time":
+              labels = ["Pagi", "Siang", "Sore"];
+              data = [5, 20, 15];
+              break;
+            default:
+              labels = [];
+              data = [];
+              break;
+          }
+
+          // Update chart data
+          myChart.data.labels = labels;
+          myChart.data.datasets[0].data = data;
+          myChart.update();
+        });
+    </script>
+  </body>
+</html>

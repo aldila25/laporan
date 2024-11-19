@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Export Data</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Export Data Kehadiran</h1>
+      <div class="export-options">
+        <button id="export-excel-btn">Export to Excel</button>
+        <button id="export-pdf-btn">Export to PDF</button>
+      </div>
+      <div id="export-content">
+        <!-- Data laporan kehadiran akan dimuat di sini -->
+        <table id="attendance-table">
+          <thead>
+            <tr>
+              <th>Nama Karyawan</th>
+              <th>Tanggal</th>
+              <th>Waktu Masuk</th>
+              <th>Waktu Keluar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Salwa</td>
+              <td>12-09-2024</td>
+              <td>08:00</td>
+              <td>17:00</td>
+            </tr>
+            <tr>
+              <td>Winna</td>
+              <td>12-09-2024</td>
+              <td>08:15</td>
+              <td>17:05</td>
+            </tr>
+            <!-- Tambahkan data lainnya -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tambahkan library eksternal di sini -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.13/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- File JavaScript -->
+    <script src="script.js"></script>
+  </body>
+</html>
